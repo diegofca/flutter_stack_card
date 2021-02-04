@@ -106,9 +106,6 @@ class _StackCardState extends State<StackCard> {
         child: Container(
             width: width * .8,
             height: height * .8,
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(color: Colors.black38, spreadRadius: 1, blurRadius: 2)
-            ], borderRadius: BorderRadius.all(Radius.circular(12))),
             child: widget.itemBuilder(context, index)));
   }
 
