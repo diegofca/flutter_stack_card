@@ -24,21 +24,22 @@ class StackCard extends StatefulWidget {
   final StackDimension dimension;
   final StackType stackType;
   final Offset stackOffset;
+  
+  var pageController = PageController();
 
   @override
   _StackCardState createState() => _StackCardState();
 }
 
 class _StackCardState extends State<StackCard> {
-  var _pageController = PageController();
   var _currentPage = 0.0;
   var _width, _height;
 
   @override
   Widget build(BuildContext context) {
-    _pageController.addListener(() {
+    widget.pageController.addListener(() {
       setState(() {
-        _currentPage = _pageController.page;
+        _currentPage = widget.pageController.page;
       });
     });
 
@@ -58,7 +59,7 @@ class _StackCardState extends State<StackCard> {
       PageView.builder(
         onPageChanged: widget.onSwap,
         physics: BouncingScrollPhysics(),
-        controller: _pageController,
+        controller: widget.pageController,
         itemCount: widget.itemCount,
         itemBuilder: (context, index) {
           return Container();
@@ -106,9 +107,6 @@ class _StackCardState extends State<StackCard> {
         child: Container(
             width: width * .8,
             height: height * .8,
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(color: Colors.black38, spreadRadius: 1, blurRadius: 2)
-            ], borderRadius: BorderRadius.all(Radius.circular(12))),
             child: widget.itemBuilder(context, index)));
   }
 
