@@ -108,6 +108,10 @@ class _StackCardState extends State<StackCard> {
             height: height * .8,
             child: widget.itemBuilder(context, index)));
   }
+  
+  void setCurrentPage(int page) {
+    this._currentPage = page;
+  }
 
   Widget _cardIndicator() {
     return Align(
